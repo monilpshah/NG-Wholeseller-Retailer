@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+    <ion-title class="ion-title">Kurtis Point</ion-title>       
+
+    <!-- <ion-button slot="end">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>  -->
+
+    <ion-icon slot="end" name="cart" style="color:blue;margin-right: 10px;" (click)="ToCart()"></ion-icon>
+    
+  </ion-toolbar>
+
+  <ion-searchbar (ionInput)="getTopics($event)" (click)="onClickChange()" class="ion-searchbar" ></ion-searchbar>
+
+  <ion-list *ngIf="flag_search==true" style="background-color:white">
+    <ion-item *ngFor="let topic of topics" (click)="onClick(topic)">
+      {{ topic }}
+    </ion-item>
+  </ion-list>
+
+</ion-header>
+
+<ion-content class="card-background-page">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-item>
+          <ion-label class="ion-label" style="font-size: 8px;">Color</ion-label>
+          <ion-select okText="Okay" cancelText="Dismiss" [(ngModel)]="product_color" (ionChange)="MoveColor()">
+              <ion-select-option value="{{item}}" *ngFor="let item of colors" (click)="onColor()">{{item}}</ion-select-option>             
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="4">
+        <ion-item>
+          <ion-label class="ion-label">Size</ion-label>
+          <ion-select   okText="Okay" cancelText="Dismiss" [(ngModel)]="product_size" (ionChange)="MoveSize()">
+              <ion-select-option value="{{item}}" *ngFor="let item of sizes" value="{{item}}">{{item}}</ion-select-option> 
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      
+      <ion-col size="4">
+        <ion-item>
+          <ion-label class="ion-label">Price</ion-label>
+          <ion-select okText="Okay" cancelText="Dismiss" [(ngModel)]="product_price" (ionChange)="MovePrice()">
+            <ion-select-option value="{{item}}" *ngFor="let item of prices">{{item}}</ion-select-option> 
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  
+      <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide>
+            <img src="../../assets/images/slide_img/slide1.jpg" style="height:300px;width:200px">
+          </ion-slide>
+          <ion-slide>
+              <img src="../../assets/images/slide_img/slide2.jpg" style="height:300px;width:200px">
+          </ion-slide>
+          <ion-slide>
+              <img src="../../assets/images/slide_img/slide3.jpg" style="height:300px;width:200px">
+          </ion-slide>
+          <ion-slide>
+              <img src="../../assets/images/slide_img/slide4.jpg" style="height:300px;width:200px">
+          </ion-slide>
+          <ion-slide (click)="ListProduct()">
+              <h1>MORE....</h1>
+          </ion-slide>
+        </ion-slides>      
+  
+
+  <ion-label class="label" style="text-align: center;">50% Discount</ion-label> 
+  <ion-card>
+    <img src="../../assets/images/slide_img/dis_img.jpg" height="200px" (click)="onDiscount()">
+  </ion-card>
+
+  <!-- <ion-label class="label">Sellers From Your Location</ion-label> 
+  <ion-card>
+      <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide>
+            <img src="../../assets/images/slide_img/final_img.jpg" (click)="onSeller()">
+          </ion-slide>
+          <ion-slide>
+              <h1>More.....</h1>
+          </ion-slide>
+      </ion-slides>      
+  </ion-card> -->
+
+  <ion-label class="label">Short Kurtis</ion-label> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let item of aarr">
+        <img   (click)="onSelect(item)" class="a" src="http://localhost:3000/images/kurti_images/{{item.product_img}}" >
+      </ion-col>
+    </ion-row>
+    <ion-card >
+      <ion-item class="activated">
+        <ion-label (click)="onShort()">All short Kurti</ion-label>
+      </ion-item>
+   </ion-card>
+  </ion-grid>
+
+  <ion-label class="label">Long Kurtis</ion-label> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let item of barr">
+        <img   (click)="onSelect(item)" class="a" src="http://localhost:3000/images/kurti_images/{{item.product_img}}" >
+      </ion-col>
+    </ion-row>
+    <ion-card>
+      <ion-item class="activated">
+        <ion-label (click)="onLong()">All Long Kurti</ion-label>
+      </ion-item>
+   </ion-card>
+  </ion-grid>
+
+  <ion-label class="label">Anarkali Kurtis</ion-label> 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let item of carr">
+        <img   (click)="onSelect(item)" class="a" src="http://localhost:3000/images/kurti_images/{{item.product_img}}" >
+      </ion-col>  
+    </ion-row>
+    <ion-card>
+      <ion-item (click)="onAnarkali()" class="activated">
+        <ion-label >All Anarkali Kurti</ion-label>
+      </ion-item>
+   </ion-card>
+  </ion-grid>
+
+</ion-content>
+
+

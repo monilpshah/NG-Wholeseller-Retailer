@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <style>
+      body{
+        background-image: url('http://localhost:3000/images/kurti_images/back6.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        opacity: 0.8;
+      }
+      .a{
+          margin-top: 30%;
+      }
+      .container
+      {
+        height: 900px;
+        width: 400px;
+        opacity: 0.9;
+        position: absolute;
+        top:90px;
+        left:400px;
+        background-color:whitesmoke;
+        margin: 0 auto;
+        
+      }
+      </style>
+    </head>
+<body>
+
+
+
+
+<div class="container">
+  <h1>Add Product Form</h1>
+  <div class="example-container">
+
+     <h5>Image</h5><input type="file" (change)="onChange($event)"><br>
+
+    <mat-form-field>
+      <mat-select placeholder="Product" [(ngModel)]="fk_cat_id">
+        <mat-option *ngFor="let category of categories" [value]="category.cat_id" >
+          {{category.cat_name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+<br>
+      <mat-form-field>
+        <mat-select placeholder="Brand_Name" [(ngModel)]="fk_brand_id">
+          <mat-option *ngFor="let brand of brands" [value]="brand.brand_id" >
+            {{brand.brand_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+<br>
+          <mat-form-field>
+            <mat-select placeholder="Quantity" [(ngModel)]="product_qty">
+              <mat-option *ngFor="let item of qtyarr" [value]="item">
+                {{item}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+<br>
+            <mat-form-field>
+                <input matInput placeholder="Product_Size" name="product_size" [(ngModel)]="product_size">
+              </mat-form-field>
+  <br>
+              <mat-form-field>
+                <input matInput placeholder="Product_color" name="product_color" [(ngModel)]="product_color">
+              </mat-form-field>
+<br>
+              <mat-form-field>
+                <input matInput placeholder="Product_price" name="product_price" [(ngModel)]="product_price">
+              </mat-form-field>
+<br>
+              <mat-form-field>
+                <input matInput placeholder="Email_id" name="fk_user_id" [(ngModel)]="fk_user_id">
+              </mat-form-field>
+<br>
+           <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+<br>
+
+ <div class="button-row">
+    <button (click)="onAdd()" style="width: 40%;height: 50px;margin-left: 20px;border-radius: 2px;background-color: cornflowerblue;font-size: 20px;">Add Product</button>
+ </div>
+  </div>
+</div>
+
+</body>
+</html>

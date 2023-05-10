@@ -1,0 +1,7 @@
+{
+  "name": "EComRetailer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

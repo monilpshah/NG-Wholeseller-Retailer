@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-icon slot="start" name="arrow-round-back" style="color:blue; margin-left:10px;" (click)="onBack()"></ion-icon>
+    <ion-title>Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="container" style="padding: 10px;width: 100%;font-size: medium;">
+   <div class="example-container">
+    <mat-form-field>
+      <input matInput
+      placeholder="Email"
+      required
+      email
+  
+      [(ngModel)]="email_id"
+      id="email_id"
+      name="email_id"
+      #email="ngModel">
+  
+      <mat-error *ngIf="email?.hasError('required')">
+        Email required
+      </mat-error>
+  
+      <mat-error *ngIf="email?.hasError('email')">
+        Email is incorrect
+      </mat-error>
+    </mat-form-field>
+  
+      <mat-form-field hintLabel="Minimum Char 8 and Maximum 12">
+      <input matInput   
+      placeholder="Password"
+      required
+  
+      [(ngModel)]="password"
+      id="password"
+      name="password"
+      #name="ngModel"
+      minlength="8"
+      maxlength="12"
+      [type]="flag?'password':'text'">
+  
+      <mat-error *ngIf="name?.hasError('required')">
+        Password is required
+      </mat-error>
+  
+     <!--  <mat-hint align="end">{{name.value.length}}/12</mat-hint>-->
+  
+     <!-- <mat-icon matSuffix (click)="flag=!flag">{{flag?'visibility':'visibility_off'}}</mat-icon> -->
+  
+    </mat-form-field>
+    <br><br>
+     <mat-form-field>
+      <input matInput
+      placeholder="Name"
+      required
+      [(ngModel)]="user_name"
+      id="name"
+      name="name"
+      #uname="ngModel">
+  
+      <mat-error *ngIf="uname?.hasError('required')">
+        Name required
+      </mat-error>
+    </mat-form-field>
+  
+      <mat-form-field>
+      <input matInput
+      placeholder="Mobile No."
+      required
+  
+      [(ngModel)]="mobile_no"
+      id="mobileNo"
+      name="mobileNo"
+      #mobileNo="ngModel"
+      maxlength="10">
+  
+      <mat-error *ngIf="mobileNo?.hasError('required')">
+        Mobile number required
+      </mat-error>
+      <!-- <mat-hint >{{mobileNo.value.length}}/10</mat-hint> -->
+    </mat-form-field>
+      
+   <!-- <mat-form-field>
+    <mat-select placeholder="userType" name="user_type" [(ngModel)]="user_type">
+      <mat-option *ngFor="let item of usertype" [value]="item">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+   -->
+   
+  <mat-form-field>
+    <mat-select placeholder="City" [(ngModel)]="city" >
+      <mat-option *ngFor="let item of cities" [value]="item" style="background-color: gray;color: white;">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <textarea matInput placeholder="Address" [(ngModel)]="address"></textarea>
+  </mat-form-field>
+  
+  <div class="button-row">
+  <button mat-raised-button color="primary" (click)="onAdd()">Sign up</button>
+  </div> 
+   </div>
+  </div>
+  
+</ion-content>

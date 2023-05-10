@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-button slot="start" style="background-color: white"> -->
+    <ion-icon slot="start" name="arrow-round-back" style="color:blue; margin-left:10px;" (click)="onBack()"></ion-icon>
+    <!-- <ion-back-button></ion-back-button> -->
+    <!-- </ion-button>  -->
+
+    <ion-title>{{cat_name}}</ion-title>
+  </ion-toolbar>
+  <!-- <button>Back</button> -->
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="http://localhost:3000/images/kurti_images/{{product_img}}">
+  </ion-card>
+
+  <!-- <ion-card-content>
+      <h2>Rs. {{product_price}}</h2>
+  </ion-card-content> -->
+
+  <ion-card-header>
+    <ion-label><b>{{cat_name}}</b> of {{brand_name}} brand in {{product_color}} color </ion-label>
+    <ion-label>Size of product {{product_size}} </ion-label>
+    <!-- <ion-card-subtitle><h2>{{brand_name}} brand</h2></ion-card-subtitle> -->
+  </ion-card-header>
+
+  <ion-card-content>
+    <h2>Rs. {{product_price}}</h2>
+  </ion-card-content>
+
+
+  <!-- <ion-card-content>
+      <h3>Rs. {{product_price}}</h3>
+      <h3><b>Availaible_color:-</b>{{product_color}}</h3>
+      <h3><b>Availaible_size:-</b>{{product_size}}</h3>
+    </ion-card-content>
+    -->
+
+  <div *ngIf="qty_flag==true">
+    <ion-label style=" margin-left: 10px; color:red"><b><u>{{qty_msg}}</u></b></ion-label>
+  </div>
+
+  <div class="button-row" style="margin-left: 10px;" *ngIf="qty_flag==false">
+    <button mat-raised-button color="primary" (click)="onPurchase()">Purchase</button>
+  </div>
+  <br>
+
+  <ion-label style="margin-left: 15px; font-size: 20px;">Similar products</ion-label>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of arr">
+      <ion-card class="ion-class">
+        <img src="http://localhost:3000/images/kurti_images/{{item.product_img}}" (click)="onDetails(item)"
+          style="height:150px; width:150px">
+        <ion-label><b>Rs.{{item.product_price}} </b></ion-label>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- 
+<ion-card-title style="margin-left: 15px;">Similar products</ion-card-title>
+ <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let item of arr">
+          <img (click)="onDetails(item)" src="http://localhost:3000/images/kurti_images/{{item.product_img}}" height="70px">
+          <ion-label>Rs.{{item.product_price}}</ion-label>
+           <div class="button-row">
+            </div>
+         </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+</ion-content>

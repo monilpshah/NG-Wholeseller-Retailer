@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+      
+        <ion-icon slot="start" name="arrow-round-back" style="color:blue; margin-left:10px;" (click)="onBack()"></ion-icon>
+
+      <ion-title>
+        My Orders
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- <ion-list>
+      <ion-item *ngFor="let item of proarr">
+        <ion-icon [name]="item.icon" slot="start"></ion-icon>
+        <img src="http://localhost:3000/images/kurti_images/{{item.product_img}}" style="height: 100px; width:80px">
+        {{item.cat_name}}
+        <div class="item-note" slot="end">
+          {{item.product_price}}
+        </div>
+      </ion-item>
+    </ion-list> -->
+    <ion-grid>
+      <ion-row *ngFor="let item of proarr">
+        
+            <ion-col>
+                <img src="http://localhost:3000/images/kurti_images/{{item.product_img}}">
+              </ion-col>
+              <ion-col>
+                <ion-row>
+                  <ion-label>{{cat_name}} of size {{item.product_size}}</ion-label>
+                </ion-row>
+                <ion-row>
+                  <ion-label><b>Rs. {{item.product_price}}</b></ion-label>
+                </ion-row>
+              </ion-col>
+        
+        
+      </ion-row>
+    </ion-grid>
+    <!--
+      <div *ngIf="selectedItem" padding>
+        You navigated here from <b>{{selectedItem.title }}</b>
+      </div>
+    -->
+  </ion-content>
+  

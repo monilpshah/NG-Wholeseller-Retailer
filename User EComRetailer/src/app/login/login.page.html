@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+    
+    <ion-content padding>
+      <ion-img src="../../assets/images/login.png"
+      style=" height: 100px ; width:200px; margin-top: 20px; margin-left: 40px">
+    </ion-img>
+      <div class="container">
+       <div class="example-container" style="padding: 30px;">
+        <mat-form-field>
+          <input matInput
+          placeholder="Email"
+          required
+          email
+      
+          [(ngModel)]="email_id"
+          id="email_id"
+          name="email_id"
+          #email="ngModel">
+      
+          <mat-error *ngIf="email?.hasError('required')">
+            Email required
+          </mat-error>
+      
+          <mat-error *ngIf="email?.hasError('email')">
+            Email is incorrect
+          </mat-error>
+        </mat-form-field>
+      
+         <mat-form-field hintLabel="Minimum Char 8 and Maximum 12">
+          <input matInput
+          placeholder="Password"
+          required
+      
+          [(ngModel)]="password"
+          id="password"
+          name="password"
+          #name="ngModel"
+          minlength="8"
+          maxlength="12"
+          [type]="flag?'password':'text'">
+      
+          <mat-error *ngIf="name?.hasError('required')">
+            Password is required
+          </mat-error>
+      
+          <!-- <mat-hint align="end">{{name.value.length}}/12</mat-hint> -->
+      
+         <!-- <mat-icon matSuffix (click)="flag=!flag">{{flag?'visibility':'visibility_off'}}</mat-icon> -->
+      
+         </mat-form-field>
+       <!-- <mat-form-field>
+          <mat-select placeholder="userType" name="user_type" [(ngModel)]="user_type">
+            <mat-option *ngFor="let item of usertype" [value]="item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+      <br><br>
+      <div class="button-row" style="padding: 20px;">
+        <button mat-raised-button color="primary" (click)="onLogin()">Login</button>
+      </div>
+      <br>
+          <ion-label (click)="onForgetPassword()" style="margin-left: 20px;"><b><u>Forget Password?</u></b></ion-label>
+      <br>
+        
+
+        <ion-label *ngIf="email_flag==true">{{forget_msg}}</ion-label>
+        
+        <ion-label style="color: red" *ngIf="wrong_user_pass==true">{{wrong_msg}}</ion-label>
+
+        <div class="button-row" style="margin-left: 20px; margin-top: 10px;">
+          <b>Not have an account?</b><a (click)="onSign()">Sign up</a>
+        </div>
+    
+        </div>
+        </div>
+      
+    </ion-content>
+    

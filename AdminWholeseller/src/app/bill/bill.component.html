@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <style>
+      body{
+        background-image: url('http://localhost:3000/images/kurti_images/back6.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        opacity: 0.8;
+      }
+      .a{
+          margin-top: 30%;
+      }
+      .container
+      {
+        height: 900px;
+        width: 100%;
+        opacity: 0.9;
+        position: absolute;
+        top:90px;
+        margin: 0 auto;
+        
+      }
+      </style>
+    </head>
+<body>
+
+<div class="container">
+  <h1>Bill Table</h1>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search user">
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource">
+
+          <!-- <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef> </th>
+              <td mat-cell *matCellDef="let element">
+                <input type="checkbox" (change)="onChange(element)">
+              </td>
+          </ng-container> -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="fk_user_id">
+          <th mat-header-cell *matHeaderCellDef> Email Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.fk_user_id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="bill_amt">
+          <th mat-header-cell *matHeaderCellDef> bill_amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.bill_amt}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" (click)="onDetails(element)">
+              Details
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displaycolumns"></tr>
+        <tr mat-row *matRowDef="let row; columns:displaycolumns;"></tr>
+
+
+      </table>
+      <mat-paginator [pageSizeOptions]="[5,3]"></mat-paginator>
+
+    </div>
+
+
+</body>
+</html>

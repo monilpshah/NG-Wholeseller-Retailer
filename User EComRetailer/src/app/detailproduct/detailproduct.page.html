@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-icon slot="start" name="arrow-round-back" style="color:blue; margin-left:10px;" (click)="onBack()"></ion-icon>
+    <ion-title>Kurties</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!-- <ion-grid>
+<ion-row *ngFor="let item of images">
+  <ion-col>
+    <ion-card style="width:45%; height:55%;" >
+    <ion-img  [src]="item.image"></ion-img>
+  </ion-card>
+  </ion-col>
+</ion-row>
+</ion-grid> -->
+<ion-grid >
+    <ion-row >
+      
+      <ion-col size="6" *ngFor="let item of proarr">
+       <!-- <img class="a" src="../../assets/images/1.jpg" > -->
+       <img (click)="onSelect(item)" class="a" src="http://localhost:3000/images/kurti_images/{{item.product_img}}" >
+       <h4>${{item.product_price}}</h4>
+      </ion-col>
+      <!-- <ion-col>
+         <img class="a" src="../../assets/images/2.jpg" >
+      </ion-col> -->
+    </ion-row>
+</ion-grid>  
+</ion-content>

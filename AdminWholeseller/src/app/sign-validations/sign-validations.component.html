@@ -1,0 +1,39 @@
+<form class="example-form">
+  <mat-form-field  hintLabel="Must enter valid email" class="example-full-width">
+    <input matInput
+     placeholder="Email Id"
+     name="email"
+     id="email"
+     ngModel
+     #email=ngModel
+     required
+     email>
+
+     <mat-error *ngIf="email?.hasError('required')">
+      Email id is required
+     </mat-error>
+
+     <mat-error *ngIf="email?.hasError('email')">
+      Email id is not valid
+     </mat-error>
+
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field hintLabel="Maximum Char 8">
+    <input matInput
+    placeholder="Password"
+    maxlength="8"
+    name="password"
+    ngModel
+    #password="ngModel"
+    required
+    [type]="flag?'password':'text'">
+
+    <mat-hint align="end">{{password.value.length}}/8</mat-hint>
+
+    <mat-icon matSuffix (click)="flag=!flag">{{flag?'visibility':'visibility_off'}}</mat-icon>
+
+  </mat-form-field>
+</form>

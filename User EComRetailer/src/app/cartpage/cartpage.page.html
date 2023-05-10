@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+        <ion-icon slot="start" name="arrow-round-back" style="color:blue; margin-left:10px;" (click)="onBack()"></ion-icon>
+
+      <ion-title>
+        Cart
+      </ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+      <ion-item *ngFor="let item of cart_items;let i=index"> 
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              
+              <ion-row>
+                {{item.fk_product_id}}
+                {{item.product_name}}
+              </ion-row>
+              
+              <ion-row>
+                <select  [(ngModel)]="arrqty[i]" (change)="upgredebill(item,i)">
+                  <option *ngFor="let quantity of qtys">{{quantity}}</option>
+                </select> 
+              </ion-row>
+  
+              
+              <ion-row> 
+                  {{pricearr[i]}}
+              </ion-row>
+  
+              <ion-row> 
+                <!-- <ion-button (click)="onDelete(i)">Remove</ion-button> -->
+                <ion-button>Remove</ion-button> 
+              </ion-row>
+            
+            </ion-col>
+            <ion-col>
+                <ion-card class="ion-class">
+                  <img src="http://localhost:3000/images/kurti_images/{{item.product_img}}" style="height:100px; width:100px">
+                </ion-card>                        
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- <ion-icon name="remove" style="margin-left: 120px;"></ion-icon> -->
+        <!-- {{item.product_qty}}
+        <ion-icon name="add"></ion-icon> -->
+      </ion-item>
+      <!-- <h2>TOTAL</h2>
+      <h2>{{stotal}}</h2> -->
+         <!-- <div *ngIf="arr_flag==true">
+        <ion-label style="margin-top:50px;font-size:18px;margin-left:80px;"><b>{{arr_msg}}</b></ion-label>
+    </div>  -->
+      <ion-label><b>Total:{{stotal}}</b></ion-label>
+    </ion-list>
+    <!--
+      <div *ngIf="selectedItem" padding>
+        You navigated here from <b>{{selectedItem.title }}</b>
+      </div>
+    -->
+    <!-- <div *ngIf="arr_flag==true">
+        <ion-label style="margin-top:50px;font-size:18px;margin-left:80px;"><b>{{arr_msg}}</b></ion-label>
+    </div> -->
+    
+   <!-- <div *ngIf="arr_flag==false"> -->
+    <ion-button style="width:99% ;margin-top: 20px;margin-bottom: 10px;" (click)="onCheckOut()">CheckOut</ion-button>
+  <!-- </div> -->
+  </ion-content>
+  

@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <style>
+      body{
+        background-image: url('http://localhost:3000/images/kurti_images/back6.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        opacity: 0.8;
+      }
+      .a{
+          margin-top: 30%;
+      }
+      .container
+      {
+        height: 900px;
+        width: 100%;
+        opacity: 0.9;
+        position: absolute;
+        top:90px;
+        margin: 0 auto;
+        
+      }
+      </style>
+    </head>
+<body>
+
+
+<div class="container">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search user">
+      </mat-form-field>
+
+      <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="product_img">
+              <th mat-header-cell *matHeaderCellDef> Image </th>
+              <td mat-cell *matCellDef="let element">
+               <img src= "http://localhost:3000/images/kurti_images/{{element.product_img}}"  height="50px" width="50px">
+                </td>
+            </ng-container>
+
+        <ng-container matColumnDef="cat_name">
+          <th mat-header-cell *matHeaderCellDef> Product_name </th>
+          <td mat-cell *matCellDef="let element"> {{element.cat_name}} </td>
+        </ng-container> 
+
+        <!-- Position Column -->
+        <!-- <ng-container matColumnDef="fk_user_id">
+          <th mat-header-cell *matHeaderCellDef> Email Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.fk_user_id}} </td>
+        </ng-container> -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="product_price">
+          <th mat-header-cell *matHeaderCellDef> bill_amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.product_price}} </td>
+        </ng-container>
+
+
+        <!-- Weight Column -->
+        <!-- <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+        </ng-container> -->
+
+
+        <!-- <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary">
+              Details
+            </button>
+          </td>
+        </ng-container> -->
+
+        <tr mat-header-row *matHeaderRowDef="displaycolumns"></tr>
+        <tr mat-row *matRowDef="let row; columns:displaycolumns;"></tr>
+
+
+      </table>
+      <mat-paginator [pageSizeOptions]="[5,10]"></mat-paginator>
+
+    </div>
+
+
+</body>
+</html>

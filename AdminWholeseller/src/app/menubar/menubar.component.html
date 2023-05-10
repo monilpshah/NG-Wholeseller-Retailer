@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <style>
+      .a{
+        background-image: url('http://localhost:3000/images/kurti_images/back6.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+      }
+      .container
+      {
+        height: 300px;
+        width: 400px;
+        opacity: 0.2;
+        position: absolute;
+        top:180px;
+        left:480px;
+        background-color:beige;
+        margin: 0 auto;
+
+      }
+      </style>
+    </head>
+<body>
+
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink='./usertable'>User table</a>
+      <a mat-list-item routerLink='./signup'>Add user</a>
+      <a mat-list-item routerLink='./category'>View Categories</a>
+      <a mat-list-item routerLink='./product'>View Products</a>
+      <a mat-list-item routerLink='./wholsaller'>View Wholsaler</a>
+      <a mat-list-item routerLink='./retailer'>View retailer</a>
+      <a mat-list-item routerLink='./tempproduct'>Product added by Wholesaler</a>
+      <a mat-list-item routerLink='./bill'>Bills</a>
+      <a mat-list-item routerLink='./wholecomissionbill'>Commission of Wholesaler</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Mamta Collection</span>
+
+      <button mat-icon-button (click)="onLogout()" style="font-size: 15px; margin-left: 1000px;" >
+        Logout <mat-icon>power_settings_new</mat-icon>
+      </button>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="a">
+        <router-outlet></router-outlet>
+      </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- </div> -->
+
+</body>
+</html>
